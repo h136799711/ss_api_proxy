@@ -128,8 +128,8 @@ var v_app = new Vue({
         },
         //调用api
         request_api:function () {
-            var api_test_url = "http://localhost:8080/public/api";
-
+            // var api_test_url = "http://localhost:8080/public/api";
+            var api_test_url = "http://proxy.hebidu.cn/public/api";
             var params =  this.current_api_info.params;
 
             var data = new FormData();
@@ -164,7 +164,7 @@ var v_app = new Vue({
                 };
 
                 if(result){
-                    
+
                     var unescapResult = unescape(result.replace(/\\u/g, "%u"));
 
                     if(!this.myCodeMirror){
@@ -203,7 +203,9 @@ var v_app = new Vue({
         },
         request_json_file:function () {
             // var url = "http://localhost:8070/github/itboye_common_api/public/front.php/Index/read_xml";
-            var url = "http://localhost:8080/public/read";
+            // var url = "http://localhost:8080/public/read";
+            var url = "http://proxy.hebidu.cn/public/read";
+
             this.is_json_parsed = false;
             console.log("*API*-- ",this.selected_json_url);
             if(this.selected_json_url){
