@@ -95,10 +95,9 @@ public class SSProxyService {
                 .add("app_type", "test")
                 .add("itboye", Base64Utils.encode(encryptData));
 
-        System.out.println("Request Url = " + apiUrl);
-        form.build().forEach(pair -> {
-            System.out.println("params" + pair.getName() + " value = " + pair.getValue());
-        });
+//        form.build().forEach(pair -> {
+//            System.out.println("params" + pair.getName() + " value = " + pair.getValue());
+//        });
 
         String resp = Request.Post(URI.create(apiUrl))
                 .useExpectContinue()
