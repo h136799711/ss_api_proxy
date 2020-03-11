@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.peterasasi.cm.core.toolkits.Base64Utils;
 import org.apache.http.client.fluent.Form;
 import org.apache.http.client.fluent.Request;
-import org.apache.http.util.EntityUtils;
 import org.springframework.util.StringUtils;
 
 import java.io.IOException;
@@ -107,7 +106,7 @@ public class SSProxyService {
                 .addHeader("Content-Type", "application/x-www-form-urlencoded")
                 .addHeader("Accept-Charset", "utf-8")
                 .addHeader("Content-type", "application/json")
-                .connectTimeout(5)
+                .connectTimeout(5000)
                 .execute().returnContent().asString(Charset.forName("utf-8"));
         return this.parseResp(resp);
     }
@@ -119,6 +118,7 @@ public class SSProxyService {
             String data = respMap.getOrDefault("data", "");
             if (StringUtils.isEmpty(data)) return  "解析data为空";
             return objectMapper.writeValueAsString(this.transportCryptor.decryptData(data));
+
         } catch (JsonProcessingException e) {
             e.printStackTrace();
             return "无法解析" + resp;

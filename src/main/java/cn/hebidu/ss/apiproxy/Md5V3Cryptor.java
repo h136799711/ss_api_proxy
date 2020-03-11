@@ -32,8 +32,8 @@ public class Md5V3Cryptor implements TransportCryptor {
     public String encryptTransmissionData(Map<String, String> param, String key) {
         try {
             String jsonStr = objectMapper.writeValueAsString(param);
-            return DesUtils.encrypt(jsonStr, key.substring(0, 8));
-        } catch (JsonProcessingException | CryptException e) {
+            return Base64Utils.encode(DesCbcUtils.encrypt(jsonStr, key.substring(0, 8)));
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }

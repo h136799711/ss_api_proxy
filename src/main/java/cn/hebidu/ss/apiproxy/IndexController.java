@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.util.EntityUtils;
 import org.springframework.http.HttpRequest;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,7 +32,7 @@ public class IndexController {
                 .execute().returnResponse().getEntity(), "utf-8");
     }
 
-    @PostMapping("public/api")
+    @PostMapping(path = "public/api", produces = MediaType.TEXT_HTML_VALUE)
     public String index(HttpServletRequest request) {
 //        String alg = request.getParameter("alg");
         String apiUrl = request.getParameter("api_url");
@@ -51,7 +52,8 @@ public class IndexController {
         this.ssProxyService.setApiUrl(apiUrl);
         this.ssProxyService.setClientId(clientId);
         this.ssProxyService.setClientSecret(clientSecret);
-        params.forEach((k, v) -> log.debug(k + " = " + v));
+
+//        params.forEach((k, v) -> log.debug(k + " = " + v));
 
         try {
             return this.ssProxyService.request(params);
