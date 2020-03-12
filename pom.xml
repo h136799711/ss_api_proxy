@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>cn.hebidu.ss</groupId>
 	<artifactId>api-proxy</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<name>api-proxy</name>
 	<description>sunsun api proxy</description>
 
@@ -22,7 +22,7 @@
 		<dependency>
 			<groupId>com.github.peterasasi.cm</groupId>
 			<artifactId>core</artifactId>
-			<version>1.0.6</version>
+			<version>1.0.8</version>
 		</dependency>
 
 		<dependency>
